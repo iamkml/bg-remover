@@ -6,40 +6,54 @@ import io
 # --- Page Config ---
 st.set_page_config(
     page_title="Background Remover",
-    page_icon="🎨",
+    page_icon="🖼️",
     layout="centered",
     initial_sidebar_state="expanded"
 )
 
-# --- Custom CSS for Glassy Golden-Black Theme ---
+# --- Dark Night Theme CSS ---
 st.markdown("""
 <style>
 body {
-    background: linear-gradient(to right, #1a1a1a, #0d0d0d);
-    color: gold;
+    background-color: #0a0a0a;
+    color: #f1c40f;
+    font-family: 'Arial', sans-serif;
 }
+
 .stApp {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 20px;
+    background-color: #121212;
+    border-radius: 15px;
+    padding: 25px;
 }
+
 h1, h2, h3, h4 {
-    color: gold;
+    color: #f1c40f;
     text-align: center;
 }
+
 .stButton>button {
-    background-color: gold;
-    color: black;
+    background-color: #f1c40f;
+    color: #0a0a0a;
     height: 3em;
     width: 100%;
     border-radius: 10px;
     font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.stButton>button:hover {
+    background-color: #d4ac0d;
+}
+
+.stFileUploader>div>div>input {
+    color: #f1c40f;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # --- Title ---
-st.title("🎨 Background Remover")
+st.title("🌌 Background Remover")
 st.write("Upload an image and remove its background instantly!")
 
 # --- File Uploader ---
@@ -75,5 +89,5 @@ if uploaded_file is not None:
 # --- Sidebar ---
 with st.sidebar:
     st.header("Settings")
-    st.write("This is a simple background remover app.")
-    st.write("Made with Streamlit and rembg.")
+    st.write("Dark Night Theme 🌓")
+    st.write("Made with Streamlit & rembg.")
