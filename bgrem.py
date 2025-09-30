@@ -6,54 +6,68 @@ import io
 # --- Page Config ---
 st.set_page_config(
     page_title="Background Remover",
-    page_icon="🖼️",
+    page_icon="🌲",
     layout="centered",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
-# --- Dark Night Theme CSS ---
+# --- CSS: Black & Golden Transparent Glass Forest ---
 st.markdown("""
 <style>
+/* Hide menu and footer */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+/* Background & text */
 body {
-    background-color: #0a0a0a;
-    color: #f1c40f;
+    background: linear-gradient(to bottom right, #0a0a0a, #1a1a1a);
+    color: gold;
     font-family: 'Arial', sans-serif;
 }
 
+/* Glassy app container */
 .stApp {
-    background-color: #121212;
-    border-radius: 15px;
-    padding: 25px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(255,215,0,0.3);
 }
 
+/* Headings */
 h1, h2, h3, h4 {
-    color: #f1c40f;
+    color: gold;
     text-align: center;
+    text-shadow: 0 0 8px rgba(255,215,0,0.6);
 }
 
+/* Buttons */
 .stButton>button {
-    background-color: #f1c40f;
+    background-color: rgba(255,215,0,0.9);
     color: #0a0a0a;
     height: 3em;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: bold;
     font-size: 16px;
     transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255,215,0,0.5);
 }
 
 .stButton>button:hover {
-    background-color: #d4ac0d;
+    background-color: rgba(255,215,0,1);
 }
 
+/* File uploader input text */
 .stFileUploader>div>div>input {
-    color: #f1c40f;
+    color: gold;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # --- Title ---
-st.title("🌌 Background Remover")
+st.title("🌲 Background Remover")
 st.write("Upload an image and remove its background instantly!")
 
 # --- File Uploader ---
@@ -85,9 +99,3 @@ if uploaded_file is not None:
         file_name="output.png",
         mime="image/png"
     )
-
-# --- Sidebar ---
-with st.sidebar:
-    st.header("Settings")
-    st.write("Dark Night Theme 🌓")
-    st.write("Made with Streamlit & rembg.")
