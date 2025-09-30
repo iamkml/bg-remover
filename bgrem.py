@@ -3,18 +3,53 @@ from rembg import remove
 from PIL import Image
 import io
 
-st.set_page_config(page_title="Background Remover", page_icon="🖼️", layout="centered")
+# --- Page Config ---
+st.set_page_config(
+    page_title="Background Remover",
+    page_icon="🎨",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
 
-st.title("🖼️ Background Remover")
+# --- Custom CSS for Glassy Golden-Black Theme ---
+st.markdown("""
+<style>
+body {
+    background: linear-gradient(to right, #1a1a1a, #0d0d0d);
+    color: gold;
+}
+.stApp {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+}
+h1, h2, h3, h4 {
+    color: gold;
+    text-align: center;
+}
+.stButton>button {
+    background-color: gold;
+    color: black;
+    height: 3em;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: bold;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# --- Title ---
+st.title("🎨 Background Remover")
 st.write("Upload an image and remove its background instantly!")
 
-# File uploader
+# --- File Uploader ---
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Open the uploaded image
+    # Open uploaded image
     input_image = Image.open(uploaded_file)
     
+    # Display original
     st.subheader("📥 Original Image")
     st.image(input_image, use_column_width=True)
 
@@ -36,3 +71,9 @@ if uploaded_file is not None:
         file_name="output.png",
         mime="image/png"
     )
+
+# --- Sidebar ---
+with st.sidebar:
+    st.header("Settings")
+    st.write("This is a simple background remover app.")
+    st.write("Made with Streamlit and rembg.")
